@@ -16,7 +16,7 @@
     {
         require_once 'phonebook.html';
     } else {
-        require_once ('authorization.html');
+        require_once('authorization.php');
     }
     ?>
 

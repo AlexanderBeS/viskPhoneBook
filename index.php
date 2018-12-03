@@ -18,7 +18,7 @@ debug_print_backtrace();
 $start = new Start();
 Start::run();
 
-?>
+
 
 
 

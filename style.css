@@ -12,11 +12,11 @@ body {
 }
 .content {
     background-color: white;
-    width: 40%;
+    /*width: 40%;
     position: absolute;
     top: 30%;
     transform: translateY(-50%) translateX(-50%);
-    left: 50%;
+    left: 50%;*/
     max-width: 800px;
 }
 
@@ -71,12 +71,19 @@ header {
 .login input[type=text], .login input[type=password] {
     width: 80%;
     margin: 0 auto;
-    display: block;
+    /*display: block;*/
 }
 
 .login p.submit {
     text-align: right;
     padding-right: 7%;
+}
+
+.orangemsg {
+    font-size: 18px;
+    color: #ff9b0c;
+    font-weight: 500;
+    font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif;
 }
 
 
@@ -123,6 +130,7 @@ input[type=submit] {
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     cursor: pointer;
+    margin: 0 13%;
     /*background-image: -webkit-linear-gradient(top, #edf5f8, #cde5ef);*/
     /*background-image: -moz-linear-gradient(top, #edf5f8, #cde5ef);*/
     /*background-image: -o-linear-gradient(top, #edf5f8, #cde5ef);*/
