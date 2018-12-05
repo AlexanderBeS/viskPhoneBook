@@ -1,6 +1,6 @@
 <?php
 
-class PhonebookController extends Core
+class PhonebookController extends BaseController
 {
     public function __construct()
     {

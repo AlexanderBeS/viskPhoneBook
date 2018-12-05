@@ -10,27 +10,37 @@ class Authorization extends Database
 {
     public $userLogin;
     public $userPass;
+    public $loginError;
 
-    public function getAuthInfo(){
+    public function __construct()
+    {
+        parent::__construct();
+        $this->loginError = false;
+    }
+
+    public function getAuthInfo()
+    {
         $this->userLogin = trim(htmlspecialchars($_POST['login']));
         $this->userPass = trim(htmlspecialchars($_POST['password']));
     }
 
-    public function checkAuthInfo() {
+    public function checkAuthInfo()
+    {
         if (($_SERVER['REQUEST_METHOD'] == 'POST') && (isset($_POST['btn_auth']))) {
             $tblName = 'users';
             $this->getAuthInfo();
-            $query = "SELECT * FROM $tblName WHERE login='$this->userLogin' and pass='$this->userPass' LIMIT 1";
-            $userInfo = $this->results($this->query($query));
+            $query = "SELECT id FROM $tblName WHERE login='$this->userLogin' and pass='$this->userPass' LIMIT 1";
+            $uId = $this->results($this->query($query));
 
-            //Если получен массив пользователя, то возвращаем его
-            if ($userInfo)
+            if ($uId)
             {
-                return $userInfo;
+                $_SESSION['uId'] = $uId;
+                return $uId;
             } else {
-                echo "КАК ВЫВЕСТИ ОШИБКУ КУДА НУЖНО??";
+                $this->loginError = 'Неверное имя пользователя или пароль!';
+                unset($_SESSION['uId']);
+                return false;
             }
         }
     }
-
 }

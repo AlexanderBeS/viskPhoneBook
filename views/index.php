@@ -14,7 +14,7 @@
     <div>
         <ul class="menu">
             <li>
-                <a href="/">Public Phonebook</a>
+                <a href="/phonebook">Public Phonebook</a>
             </li>
             <li>
                 <a href="/authorization">Login</a>
