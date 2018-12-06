@@ -30,8 +30,8 @@ class Contact extends Database
             $this->address = trim(htmlspecialchars($_POST['address']));
             $this->zipCity = trim(htmlspecialchars($_POST['zipcity']));
             $this->country = trim(htmlspecialchars($_POST['country']));
-            $this->phoneNumbers = '{ "0":"+38099201745"}'; //пример как будут передаваться элементы в бд
-            $this->emails = '{"0":"lorem@gmail.com"}';
+            $this->phoneNumbers =  $this->createJson(trim(htmlspecialchars($_POST['phonenumber'])));//'{ "0":"+38099201745"}'; пример как будут передаваться элементы в бд
+            $this->emails = $this->createJson(trim(htmlspecialchars($_POST['email'])));;//'{"0":"lorem@gmail.com"}';
             $this->publish = '1';
             print_r($_POST);
             //echo 'Data saved';
@@ -52,9 +52,7 @@ class Contact extends Database
 
         if ($valid) {
             $query = "INSERT INTO $table $this->tableColumn VALUES $this->tableValue";
-            //print_r($query);
             $this->query($query);
-            //echo 'Good request';
         }
     }
 
@@ -74,17 +72,21 @@ class Contact extends Database
             $columns[] = $column;
             $values[] = "'" . $val . "'";
         }
-
         $colum_sql = implode(',', $columns);
         $val_sql = implode(',', $values);
-
-
         $query = "INSERT INTO category ($colum_sql) VALUES ($val_sql)";
         echo $query . '<br>';
 
         $this->query($query);
         return $this->resId();
+    }
 
+    public function formMenu(){
+        //запрос к БД и отправка return со списком типа "menu" => ["Sweeden", "Ukraine"]
+    }
 
+    public function createJson($value)
+    {
+        //тут из формы мы делаем json объект
     }
 }

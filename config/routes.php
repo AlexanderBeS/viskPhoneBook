@@ -2,7 +2,8 @@
 
 return array(
     '' => 'Phonebook', //главная страница
-    'authorization' => 'Authorization',
-    'mycontact' => 'Contact',
-    'phonebook' => 'PhoneBook',
+    'authorization' => 'Authorization/auth',
+    'mycontact' => 'Contact/show',
+    'phonebook' => 'Phonebook/show',
+    'logout' => 'Authorization/logout',
 );

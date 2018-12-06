@@ -8,7 +8,7 @@ div {
 }
 
 body {
-    background-color: #00a1cb;
+    background-color: lightblue;
 }
 .content {
     background-color: white;
@@ -23,7 +23,7 @@ body {
 /*header*/
 header {
     height: 80px;
-    background-color: lightblue;
+    background-color: #00b6e6;
 }
 
 .login > form {
@@ -36,7 +36,7 @@ header {
     padding: 0; /* убрать внешние отступы */
 }
 .menu {
-    background: #03658e; /* цвет фона навигационной панели */
+    background: #2978de; /* цвет фона навигационной панели */
 }
 .menu li{
     display:inline-block; /* расположить пункты горизонтально */
@@ -44,12 +44,17 @@ header {
 }
 .menu a {
     display: block; /* ссылка растягивается на весь пункт li */
-    padding: 5px 15px; /* задаем внутренние отступы */
+    padding: 15px 15px; /* задаем внутренние отступы */
     color: #fff; /* цвет текста */
     text-decoration: none; /* убрать нижнее подчёркивание у ссылок */
+    font-size: 20px;
+    font-family: sans-serif;
 }
 .menu a:hover {
-    background: #8AB8CC; /* фон пунктов при наведении */
+    background: orange; /* фон пунктов при наведении */
+}
+.current {
+    background: orange;
 }
 
 
@@ -145,3 +150,27 @@ input[type=submit]:active {
     box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
+
+.three a {
+    border-radius: 10px;
+    color:  #36454A;
+    background: -webkit-linear-gradient(top, #A4D3E0 , #A4D3E0 50%, #CBE3EB 50%);
+    background: -o-linear-gradient(top, #A4D3E0 , #A4D3E0 50%, #CBE3EB 50%);
+    background: linear-gradient(to top, #A4D3E0 , #A4D3E0 50%, #CBE3EB 50%);
+    box-shadow: 2px 2px 3px black;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 15px 25px;
+    padding: 15px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.4s ease-in-out;
+}
+.three a:hover {
+    background: -webkit-linear-gradient(bottom, #A4D3E0 , #A4D3E0 50%, #CBE3EB 50%);
+    background: -o-linear-gradient(bottom, #A4D3E0 , #A4D3E0 50%, #CBE3EB 50%);
+    background: linear-gradient(to bottom, #A4D3E0 , #A4D3E0 50%, #CBE3EB 50%);
+}

@@ -11,11 +11,6 @@ class ContactController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $myContact = new Contact();
-        $myContact->saveUserData();
-
-        $this->renderViews('mycontact.php');
-
 
  /*       $cat = new stdClass();
         if (($request->method() == 'POST')) {
@@ -43,6 +38,11 @@ class ContactController extends BaseController
         return $this->view->render('category.html', $array_vars);
     }
  */
+    }
 
+    public function showAction(){
+        $myContact = new Contact();
+        $myContact->saveUserData();
+        $this->renderViews('mycontact.php');
     }
 }

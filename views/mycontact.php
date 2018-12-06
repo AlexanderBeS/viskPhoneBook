@@ -51,7 +51,23 @@
             <p>ZIP/City:</p>
             <input name="zipcity" type="text" >
             <p>Country:</p>
-            <input name="country" type="text" >
+            <select name="country" >
+               <!--
+               сюда нужно передавать массив
+               {% for key,category in categories %}
+                <option value="{{ category.id }}" {% if product.category == category.id %}  selected  {% endif %}>{{ category.name }} </option>
+                {% endfor %}
+                -->
+                <?php
+                $option = array('Ukraine', 'Sweden');
+
+                foreach ($option as $country) {
+                    echo "<option value=$country> $country </option>";
+                }
+
+                ?>
+
+            </select>
         </div>
 
         <div style="float: left; background-color: green; display: block">

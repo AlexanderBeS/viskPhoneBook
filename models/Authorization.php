@@ -37,10 +37,17 @@ class Authorization extends Database
                 $_SESSION['uId'] = $uId;
                 return $uId;
             } else {
-                $this->loginError = 'Неверное имя пользователя или пароль!';
+                $this->loginError = 'Wrong login of password!';
                 unset($_SESSION['uId']);
                 return false;
             }
+        }
+    }
+
+    public function logout()
+    {
+        if (isset($_SESSION['uId'])){
+            unset($_SESSION['uId']);
         }
     }
 }

@@ -8,28 +8,29 @@
 
 class AuthorizationController extends BaseController
 {
+    public $auth;
+
     public function __construct()
     {
         parent::__construct();
-        $auth = new Authorization();
+        $this->auth = new Authorization();
         $this->publicSuccess = true;
+
+    }
+
+    public function authAction()
+    {
         //Если получили массив пользователя
-        if ($auth->checkAuthInfo()){
-            //var_dump($this->publicSuccess);
-            //var_dump($this->publicSuccess);
+        if ($this->auth->checkAuthInfo()){
             $this->redirect('mycontact');
         } else {
-            $this->renderViews('authorization.php', array('loginError' => $auth->loginError,));
+            $this->renderViews('authorization.php', array('loginError' => $this->auth->loginError,));
         }
     }
 
-    public function actionLogin()
+    public function logoutAction()
     {
-
-    }
-
-    public function actionLogout()
-    {
-
+        $this->auth->logout();
+        $this->renderViews('authorization.php');
     }
 }
