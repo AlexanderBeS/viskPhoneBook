@@ -8,9 +8,12 @@
 
 class ContactController extends BaseController
 {
+    public $myContact;
+
     public function __construct()
     {
         parent::__construct();
+        $this->myContact = new Contact();
 
  /*       $cat = new stdClass();
         if (($request->method() == 'POST')) {
@@ -40,9 +43,23 @@ class ContactController extends BaseController
  */
     }
 
-    public function showAction(){
-        $myContact = new Contact();
-        $myContact->saveUserData();
-        $this->renderViews('mycontact.php');
+    //insert, add и тд продумать
+    public function saveAction()
+    {
+
+        $this->myContact->saveUserData();
+        $this->redirect('mycontact');
+    }
+
+
+    public function showAction()
+    {
+        //print_r ($_SESSION);
+        $userData = $this->myContact->getUserData();
+
+        //$user = array("firstname" => array("Alexander"));
+        print_r ($userData);
+
+        $this->renderViews('mycontact.php', $userData);
     }
 }

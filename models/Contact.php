@@ -8,6 +8,7 @@
 
 class Contact extends Database
 {
+    public $uId;
     public $firstName;
     public $lastName;
     public $address;
@@ -16,25 +17,35 @@ class Contact extends Database
     public $phoneNumbers;
     public $emails;
     public $publish;
-    public $tableColumn;
-    public $tableValue;
+    public $saveAllColumns;
+    public $getAllColumns;
 
     /*PHONE NUMBERS:
     EMAILS:*/
+    public function __construct()
+    {
+        parent::__construct();
+        $this->saveAllColumns = '(uId, firstname, lastname, address, zipcity, country, phonenumbers, emails, publish)';
+        $this->getAllColumns = 'uId, firstname, lastname, address, zipcity, country, phonenumbers, emails, publish';
+        $this->uId = $_SESSION['uId'];
+    }
+
 
     public function getFormData()
     {
         if (($_SERVER['REQUEST_METHOD'] == 'POST') && (isset($_POST['btn_save']))) {
+            //$this->uId = trim(htmlspecialchars($_POST['uId']));
             $this->firstName = trim(htmlspecialchars($_POST['firstname']));
             $this->lastName = trim(htmlspecialchars($_POST['lastname']));
             $this->address = trim(htmlspecialchars($_POST['address']));
             $this->zipCity = trim(htmlspecialchars($_POST['zipcity']));
             $this->country = trim(htmlspecialchars($_POST['country']));
-            $this->phoneNumbers =  $this->createJson(trim(htmlspecialchars($_POST['phonenumber'])));//'{ "0":"+38099201745"}'; пример как будут передаваться элементы в бд
-            $this->emails = $this->createJson(trim(htmlspecialchars($_POST['email'])));;//'{"0":"lorem@gmail.com"}';
+            $this->phoneNumbers = trim(htmlspecialchars($_POST['phonenumbers']));//'{ "0":"+38099201745"}'; пример как будут передаваться элементы в бд
+            $this->emails = trim(htmlspecialchars($_POST['email']));;//'{"0":"lorem@gmail.com"}';
             $this->publish = '1';
-            print_r($_POST);
+            //print_r($_POST);
             //echo 'Data saved';
+            //var_dump($this->phoneNumbers);
             return true;
         } else {
             //print_r($_POST);
@@ -46,39 +57,28 @@ class Contact extends Database
     public function saveUserData()
     {
         $valid = $this->getFormData();
-        $this->tableColumn = '(firstname, lastname, address, zipcity, country, phonenumbers, emails, publish)';
-        $this->tableValue = "('$this->firstName', '$this->lastName', '$this->address', '$this->zipCity', '$this->country', '$this->phoneNumbers', '$this->emails', '$this->publish')";
-        $table = 'user_information';
-
         if ($valid) {
-            $query = "INSERT INTO $table $this->tableColumn VALUES $this->tableValue";
-            $this->query($query);
+            $tableValue = "('$this->firstName', '$this->lastName', '$this->address', '$this->zipCity', '$this->country', '$this->phoneNumbers', '$this->emails', '$this->publish')";
+            $checkUserRow = "SELECT id FROM user_information WHERE uId = '$this->uId'";
+
+            //если строка с uid=номером существует, то обновляем информацию, иначе создаём новую строку
+            if ($this->result($this->query($checkUserRow))){
+                $updateString = "firstname = '$this->firstName', lastname = '$this->lastName', address = '$this->address', zipcity = '$this->zipCity', country = '$this->country', phonenumbers = '$this->phoneNumbers', emails = '$this->emails', publish = '$this->publish'";
+                $q = "UPDATE user_information SET $updateString WHERE uId='$this->uId'";
+            } else {
+                $q = "INSERT INTO user_information $this->saveAllColumns VALUES $tableValue";
+            }
+            //print_r($q);
+            $this->query($q);
         }
     }
 
-    public function getUserData($id)
+    public function getUserData()
     {
-        $q = "SELECT * FROM user_information WHERE id = $id";
+        $q = "SELECT $this->getAllColumns FROM user_information WHERE uId = '$this->uId'";
+        //print_r($q);
         $this->query($q);
         return $this->result();
-    }
-
-    public function addCategory($category)
-    {
-        if (empty($category)) {
-            return false;
-        }
-        foreach ($category as $column => $val) {
-            $columns[] = $column;
-            $values[] = "'" . $val . "'";
-        }
-        $colum_sql = implode(',', $columns);
-        $val_sql = implode(',', $values);
-        $query = "INSERT INTO category ($colum_sql) VALUES ($val_sql)";
-        echo $query . '<br>';
-
-        $this->query($query);
-        return $this->resId();
     }
 
     public function formMenu(){

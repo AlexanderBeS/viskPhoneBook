@@ -30,11 +30,11 @@ class Authorization extends Database
             $tblName = 'users';
             $this->getAuthInfo();
             $query = "SELECT id FROM $tblName WHERE login='$this->userLogin' and pass='$this->userPass' LIMIT 1";
-            $uId = $this->results($this->query($query));
+            $uId = $this->result($this->query($query));
 
             if ($uId)
             {
-                $_SESSION['uId'] = $uId;
+                $_SESSION['uId'] = $uId['id'];
                 return $uId;
             } else {
                 $this->loginError = 'Wrong login of password!';
