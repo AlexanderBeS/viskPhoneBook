@@ -23,7 +23,19 @@
                         <?= $users[$key]["phonenumbers"] ?>
                     </td>
                     <td>
-                        <?= $users[$key]["emails"] ?>
+                        <?php
+                        $j = 1;
+                        foreach($users as $key=>$value){
+                            $emails = "emails$j";
+                            $visibleemail = "visibleemail$j";
+                            foreach ($value['emails'] as $key2=>$value2){
+                                if (isset($value2->$emails)){
+                                    echo $value2->$emails . '<br>';
+                                    $j++;
+                                }
+                            }
+                            }
+                            ?>
                     </td>
                 </tr>
             </table>

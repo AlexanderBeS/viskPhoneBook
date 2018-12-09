@@ -1,9 +1,10 @@
-
-var cloneCountPh = 2;
-var cloneCountEm = 2;
+var cloneCountPh = ($(".phone p input[name^='phonenumbers']").last().attr('name').replace(/[^0-9]/gi, ''));
+var cloneCountEm = ($(".email p input[name^='emails']").last().attr('name').replace(/[^0-9]/gi, ''));
 
 $(".addphone").click(function(){
     let currentCountPh = cloneCountPh++;
+    currentCountPh++;
+
     let $parent = $('.clonephonediv');
     let $phonediv = $parent.find('.phone').first().clone();
     let $checkbox = $phonediv.find('input[type="checkbox"]');
@@ -21,6 +22,8 @@ $(".addphone").click(function(){
 
 $(".addemail").click(function(){
     let currentCountEm = cloneCountEm++;
+    currentCountEm++;
+
     let $parent = $('.cloneemaildiv');
     let $emaildiv = $parent.find('.email').first().clone();
     let $checkbox = $emaildiv.find('input[type="checkbox"]');
