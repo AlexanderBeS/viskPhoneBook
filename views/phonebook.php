@@ -1,13 +1,33 @@
-<h1> ТУТ БУДЕТ ТЕЛЕФОННАЯ КНИГА </h1>
-<br>
-<h1>John Smith</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, ipsum?</p>
-<br>
-<h1>Jessica Brown</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, rerum!</p>
-<br>
-<h1>Bill Black</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, sit.</p>
-<br>
-<h1>Robert Grey</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, sit.</p>
+
+<?php foreach ($users as $key=>$value): ?>
+
+    <div class="userinfo">
+        <div class="username">
+            <p>
+                <span><?= $users[$key]["firstname"] . ' ' . $users[$key]["lastname"]?></span>
+                <a class="toggle" href="#">View details</a>
+            </p>
+        </div>
+        <div class="toggleblock">
+            <table>
+                <tr>
+                    <th>ADDRESS</th>
+                    <th>PHONE NUMBERS</th>
+                    <th>EMAILS</th>
+                </tr>
+                <tr>
+                    <td>
+                        <?= $users[$key]["address"] . '<br>' . $users[$key]["zipcity"] . '<br>' . $users[$key]["country"] ?>
+                    </td>
+                    <td>
+                        <?= $users[$key]["phonenumbers"] ?>
+                    </td>
+                    <td>
+                        <?= $users[$key]["emails"] ?>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+<?php endforeach; ?>

@@ -6,9 +6,12 @@ class PhonebookController extends BaseController
     {
         parent::__construct();
         $this->publicSuccess = true;
+        $this->myContact = new Contact();
     }
 
-    public function showAction(){
-        $this->renderViews('phonebook.php');
+    public function showAction()
+    {
+        $users = array('users' => $this->myContact->getUsersData());
+        $this->renderViews('phonebook.php', $users);
     }
 }

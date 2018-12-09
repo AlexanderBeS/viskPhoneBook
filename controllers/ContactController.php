@@ -43,22 +43,15 @@ class ContactController extends BaseController
  */
     }
 
-    //insert, add и тд продумать
     public function saveAction()
     {
-
         $this->myContact->saveUserData();
         $this->redirect('mycontact');
     }
 
-
     public function showAction()
     {
-        //print_r ($_SESSION);
         $userData = $this->myContact->getUserData();
-
-        //$user = array("firstname" => array("Alexander"));
-        print_r ($userData);
 
         $this->renderViews('mycontact.php', $userData);
     }

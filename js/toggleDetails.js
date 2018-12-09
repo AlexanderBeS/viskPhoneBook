@@ -1,19 +1,15 @@
 $(function () {
-
-    /*$('.toggle').click(function(){
-        listItemII = document.getElementById( "ii" );
-        //$(".toggleblock").toggle(300);
-        $( '.toggle' )
-            .closest( "div")
-            .toggle(300);
-    });*/
-
     $( '.toggle' ).click(function(){
-        //$(".viewhideblock").toggle(300);
         $(this)
             .closest("div")
             .siblings()
             .toggle(300);
-    });
+        //console.log($(this).closest("div").siblings().css('display'));
 
+        if ( $(this).text() == "Hide details") {
+            $(this).text("View details");
+        } else {
+            $(this).text("Hide details");
+        }
+    });
 });

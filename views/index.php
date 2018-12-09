@@ -19,5 +19,7 @@
         </div>
         <script src="js/jquery.js"></script>
         <script src="js/currentMenu.js"></script>
+        <script src="js/toggleDetails.js"></script>
+        <script src="js/addElem.js"></script>
     </body>
 </html>
