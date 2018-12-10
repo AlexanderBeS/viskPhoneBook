@@ -74,18 +74,15 @@ class Contact extends Database
         $q = "SELECT $this->getAllColumns FROM user_information WHERE uId = '$this->uId'";
         $this->query($q);
         $res = $this->result();
-        $res['phonenumbers'] = json_decode($res['phonenumbers']);
-        $res['emails'] = json_decode($res['emails']);
         //обработка если у юзера не было информации до этого
         if (is_null($res)) {
-            $insert = "INSERT INTO user_information (id, uId) VALUES ($this->uId, $this->uId)";
+            $insert = "INSERT INTO user_information (id, uId, phonenumbers, emails) VALUES ($this->uId, $this->uId, '[{\"phonenumbers1\":\"\",\"visiblephone1\":\"0\"}]' , '[{\"emails1\":\"\",\"visibleemail1\":\"0\"}]')";
             $this->query($insert);
-
-            $q = "SELECT id, uId FROM user_information WHERE uId = '$this->uId'";
             $this->query($q);
             $res = $this->result();
         }
-
+        $res['phonenumbers'] = json_decode($res['phonenumbers']);
+        $res['emails'] = json_decode($res['emails']);
         $menu = $this->formMenu();
         $res = $res + $menu;
         return $res;
@@ -100,7 +97,6 @@ class Contact extends Database
             $res[$key]['phonenumbers'] = json_decode($res[$key]['phonenumbers']);
             $res[$key]['emails'] = json_decode($res[$key]['emails']);
         }
-        print_r($res);
         return $res;
     }
 

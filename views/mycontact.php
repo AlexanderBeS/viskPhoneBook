@@ -1,6 +1,6 @@
 <form method="post" action="/savemycontact" enctype="multipart/form-data">
     <div>
-        <div style="min-width: 31%;float: left; background-color: #ff9595; display: block; padding: 10px;">
+        <div class="mycontactdiv">
             <input name="uId" type="hidden" value="<?= $uId ?>">
             <p class="orangemsg">CONTACT:
             <p>First Name:</p>
@@ -12,13 +12,13 @@
             <p>ZIP/City:</p>
             <input name="zipcity" type="text" value="<?= $zipcity ?>">
             <p>Country:</p>
-            <select name="country">
+            <select name="country"">
                 <?php foreach ($countryMenu as $countryName): ?>
-                    <option value=<?= $countryName ?>> <?=$countryName?> </option>
+                    <option value=<?= $countryName ?> <?= ($country == $countryName)?'selected':''?>     > <?=$countryName?> </option>
                 <?php endforeach; ?>
             </select>
         </div>
-        <div style="min-width: 30%;float: left; background-color: #dded7b; display: block; padding: 10px;">
+        <div class="mycontactdiv">
             <p class="orangemsg">PHONE NUMBERS:</p>
             <div class="clonephonediv">
                 <?php
@@ -37,7 +37,7 @@
                 <a href="#" class="addphone">+Add</a>
             </p>
         </div>
-        <div style="min-width: 30%; float: left; background-color: #c9ffaf; display: block; padding: 10px;">
+        <div class="mycontactdiv">
             <p class="orangemsg">EMAILS:</p>
             <div class="cloneemaildiv">
                 <?php
@@ -59,7 +59,7 @@
             </p>
         </div>
     </div>
-    <div style="min-width: 90%; background-color: #babbf0;clear:both; display: block; padding: 10px;">
+    <div style="min-width: 90%; background-color: #babbf0; clear:both; display: block; padding: 10px;">
 
             <label>
                 <input name="publish" type="checkbox" value="1" <?php if ($publish == '1') echo 'checked' ?>>

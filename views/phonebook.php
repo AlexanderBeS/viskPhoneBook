@@ -20,22 +20,30 @@
                         <?= $users[$key]["address"] . '<br>' . $users[$key]["zipcity"] . '<br>' . $users[$key]["country"] ?>
                     </td>
                     <td>
-                        <?= $users[$key]["phonenumbers"] ?>
+                        <?php
+                        $g = 1;
+                        foreach ($value['phonenumbers'] as $phone){
+                            $phonenumbers = "phonenumbers" . $g;
+                            $visiblephone = "visiblephone" . $g;
+                            if ((isset($phone->$phonenumbers)) && ($phone->$visiblephone == '1')) {
+                                echo $phone->$phonenumbers . '<br>';
+                            }
+                            $g++;
+                        }
+                        ?>
                     </td>
                     <td>
                         <?php
                         $j = 1;
-                        foreach($users as $key=>$value){
-                            $emails = "emails$j";
-                            $visibleemail = "visibleemail$j";
-                            foreach ($value['emails'] as $key2=>$value2){
-                                if (isset($value2->$emails)){
-                                    echo $value2->$emails . '<br>';
-                                    $j++;
+                            foreach ($value['emails'] as $email){
+                                $emails = "emails" . $j;
+                                $visibleemail = "visibleemail" . $j;
+                                if ((isset($email->$emails)) && ($email->$visibleemail == '1')){
+                                    echo $email->$emails . '<br>';
                                 }
+                                $j++;
                             }
-                            }
-                            ?>
+                        ?>
                     </td>
                 </tr>
             </table>
