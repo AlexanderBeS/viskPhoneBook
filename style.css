@@ -16,6 +16,14 @@ select {
     padding: 10px;
 }
 
+.bottomContact{
+    min-width: 90%;
+    background-color: #e2e2ea;
+    clear:both;
+    display: block;
+    padding: 10px;
+}
+
 .content {
     background-color: white;
     /*width: 40%;
@@ -236,5 +244,9 @@ h1 {
     /*min-width: 30%;*/
     float: left;
     display: block;
-    padding: 40px;
+    padding: 30px;
+}
+
+.mycontactdiv p {
+    margin: 5px;
 }

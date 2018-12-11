@@ -3,15 +3,15 @@
         <div class="mycontactdiv">
             <input name="uId" type="hidden" value="<?= $uId ?>">
             <p class="orangemsg">CONTACT:
-            <p>First Name:</p>
-            <input name="firstname" type="text" value="<?= $firstname ?>">
-            <p>Last Name:</p>
-            <input name="lastname" type="text" value="<?= $lastname ?>">
-            <p>Address:</p>
-            <input name="address" type="text" value="<?= $address ?>">
-            <p>ZIP/City:</p>
-            <input name="zipcity" type="text" value="<?= $zipcity ?>">
-            <p>Country:</p>
+            <p>First Name: *</p>
+            <input name="firstname" type="text" value="<?= $firstname ?>" required>
+            <p>Last Name: *</p>
+            <input name="lastname" type="text" value="<?= $lastname ?>" required>
+            <p>Address: *</p>
+            <input name="address" type="text" value="<?= $address ?>" required>
+            <p>ZIP/City: *</p>
+            <input name="zipcity" type="text" value="<?= $zipcity ?>" required>
+            <p>Country: *</p>
             <select name="country"">
                 <?php foreach ($countryMenu as $countryName): ?>
                     <option value=<?= $countryName ?> <?= ($country == $countryName)?'selected':''?>     > <?=$countryName?> </option>
@@ -59,14 +59,13 @@
             </p>
         </div>
     </div>
-    <div style="min-width: 90%; background-color: #babbf0; clear:both; display: block; padding: 10px;">
-
+    <div class="bottomContact">
+            <p>*Fields are mandatory</p>
             <label>
                 <input name="publish" type="checkbox" value="1" <?php if ($publish == '1') echo 'checked' ?>>
                 Publish my contact
             </label>
             <input name="btn_save" type="submit" value="Save">
-
     </div>
 
 
