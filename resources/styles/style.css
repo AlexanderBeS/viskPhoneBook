@@ -8,7 +8,7 @@ div {
 }
 
 body {
-    background-image: url(images/1.jpg);
+    background-image: url(../images/1.jpg);
 }
 
 select {
@@ -26,13 +26,19 @@ select {
 
 .content {
     background-color: white;
-    /*width: 40%;
+    /*
     position: absolute;
     top: 30%;
     transform: translateY(-50%) translateX(-50%);
     left: 50%;*/
     max-width: 800px;
     min-height: 250px;
+    float: left;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
 }
 
 .toggleblock{
@@ -61,7 +67,7 @@ select {
 /*header*/
 header {
     height: 80px;
-    background-image: url(images/1.jpg);
+    background-image: url(../images/1.jpg);
 }
 
 .login > form {
@@ -75,7 +81,7 @@ header {
 }
 
 .menu {
-    background-image: url(images/2.jpg);
+    background-image: url(../images/2.jpg);
 }
 
 .menu li{

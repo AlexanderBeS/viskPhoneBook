@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>PhoneBook</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="resources/styles/style.css">
+        <script src="resources/js/jquery.js"></script>
     </head>
     <body>
         <header>
@@ -17,9 +18,8 @@
                 <?= $content; ?>
             </div>
         </div>
-        <script src="js/jquery.js"></script>
-        <script src="js/currentMenu.js"></script>
-        <script src="js/toggleDetails.js"></script>
-        <script src="js/addElem.js"></script>
+        <script src="resources/js/currentMenu.js"></script>
+        <script src="resources/js/toggleDetails.js"></script>
+        <script src="resources/js/addElem.js"></script>
     </body>
 </html>

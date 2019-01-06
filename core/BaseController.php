@@ -16,7 +16,7 @@ class BaseController {
 
     public function renderViews($fileName = NULL, $viewVars = array())
     {
-        $mainFile = '/views/index.php';
+        $mainFile = 'views/index.php';
         if ($fileName) {
             $viewFile = '/views/' . "$fileName";
             ob_start();
