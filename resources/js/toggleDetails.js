@@ -1,5 +1,6 @@
 $(function () {
-    $( '.toggle' ).click(function(){
+    // $( '.toggle' ).click(function(){
+    $(document).on('click', '.toggle', function () {
         $(this)
             .closest("div")
             .siblings()

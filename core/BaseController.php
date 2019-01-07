@@ -3,10 +3,17 @@
 class BaseController {
 
     public $publicSuccess;
+    public $ajaxRequest;
 
     public function __construct()
     {
         $this->publicSuccess = false;
+        if (isset($_REQUEST['ajax']) && $_REQUEST['ajax'])
+        {
+            $this->ajaxRequest = true;
+        } else {
+            $this->ajaxRequest = false;
+        }
     }
 
     public function redirect($destination)
@@ -17,6 +24,7 @@ class BaseController {
     public function renderViews($fileName = NULL, $viewVars = array())
     {
         $mainFile = 'views/index.php';
+        $content = '';
         if ($fileName) {
             $viewFile = '/views/' . "$fileName";
             ob_start();
@@ -25,7 +33,11 @@ class BaseController {
             $content = ob_get_contents();
             ob_clean();
         }
-        include ("$mainFile");
+        if ($this->ajaxRequest) {
+            echo $content;
+        } else {
+            include ("$mainFile");
+        }
     }
 
     /*public function checkUserAuth(){

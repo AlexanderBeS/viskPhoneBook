@@ -14,7 +14,7 @@
             <div>
                 <?php include 'modules/menu.php'; ?>
             </div>
-            <div>
+            <div class="dynamic">
                 <?= $content; ?>
             </div>
         </div>
