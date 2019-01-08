@@ -10,5 +10,12 @@ $(function () {
             $(this).addClass('current');
         }
     });
+
+    $(document).on('click', '.menu li', function () {
+        $(".menu li").removeClass();
+        $(this).addClass('current');
+    });
+
+
 });
 
