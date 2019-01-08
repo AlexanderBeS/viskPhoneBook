@@ -30,6 +30,7 @@ class AuthorizationController extends BaseController
     public function logoutAction()
     {
         $this->auth->logout();
-        $this->renderViews('authorization.php');
+        //$this->renderViews('authorization.php');
+        $this->redirect('authorization');
     }
 }

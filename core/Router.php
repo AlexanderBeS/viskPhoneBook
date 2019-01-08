@@ -39,10 +39,8 @@ class Router extends BaseController
                     if (($controller->publicSuccess)){
                         return $controller;
                     } elseif (isset($_SESSION['uId'])) {
-                        echo 'isset $_SESSION[uId])';
                         return $controller;
                     } else {
-                        echo 'NOT ISSET $_SESSION[uId])';
                         $this->redirect('authorization');
                     }
                 }

@@ -26,19 +26,20 @@ class Authorization extends Database
 
     public function checkAuthInfo()
     {
+
+
         if (($_SERVER['REQUEST_METHOD'] == 'POST') && (isset($_POST['btn_auth']))) {
             $tblName = 'users';
             $this->getAuthInfo();
             $query = "SELECT id FROM $tblName WHERE login='$this->userLogin' and pass='$this->userPass' LIMIT 1";
             $uId = $this->result($this->query($query));
 
-            if ($uId)
+            if (!(is_null($uId)))
             {
                 $_SESSION['uId'] = $uId['id'];
                 return $uId;
             } else {
                 $this->loginError = 'Wrong login of password!';
-                unset($_SESSION['uId']);
                 return false;
             }
         }
