@@ -47,7 +47,7 @@ class Authorization extends Database
     public function logout()
     {
         if (isset($_SESSION['uId'])){
-            /*unset($_SESSION['uId']);*/
+            //unset($_SESSION['uId']);
             session_destroy();
         }
     }

@@ -71,9 +71,11 @@ class Contact extends Database
 
     public function getUserData()
     {
+        if (is_null($this->uId)) { return; }
         $q = "SELECT $this->getAllColumns FROM user_information WHERE uId = '$this->uId'";
         $this->query($q);
         $res = $this->result();
+
         //обработка если у юзера не было информации до этого
         if (is_null($res)) {
             $insert = "INSERT INTO user_information (id, uId, phonenumbers, emails) VALUES ($this->uId, $this->uId, '[{\"phonenumbers1\":\"\",\"visiblephone1\":\"0\"}]' , '[{\"emails1\":\"\",\"visibleemail1\":\"0\"}]')";
@@ -81,8 +83,10 @@ class Contact extends Database
             $this->query($q);
             $res = $this->result();
         }
+
         $res['phonenumbers'] = json_decode($res['phonenumbers']);
         $res['emails'] = json_decode($res['emails']);
+
         $menu = $this->formMenu();
         $res = $res + $menu;
         return $res;

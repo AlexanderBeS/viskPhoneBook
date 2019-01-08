@@ -15,7 +15,6 @@ class AuthorizationController extends BaseController
         parent::__construct();
         $this->auth = new Authorization();
         $this->publicSuccess = true;
-
     }
 
     public function authAction()

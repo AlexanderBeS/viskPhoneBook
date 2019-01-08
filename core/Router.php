@@ -9,7 +9,6 @@ class Router extends BaseController
         //спросить тут ли стартовать сессию
         session_start();
         $this->uri_array = include('config/routes.php');
-
     }
 
     public function run()
@@ -40,8 +39,10 @@ class Router extends BaseController
                     if (($controller->publicSuccess)){
                         return $controller;
                     } elseif (isset($_SESSION['uId'])) {
+                        echo 'isset $_SESSION[uId])';
                         return $controller;
                     } else {
+                        echo 'NOT ISSET $_SESSION[uId])';
                         $this->redirect('authorization');
                     }
                 }

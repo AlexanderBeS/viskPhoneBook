@@ -10,25 +10,6 @@
 <ul class="menu">
     <li>
         <a href="/phonebook">Public Phonebook</a>
-        <!--<a href="" class="phonebook">Public Phonebook</a>
-
-
-        <script type="text/javascript">
-        $(document).ready(function(){
-            $(".phonebook").click(function() {
-                $.ajax({
-                    type: "POST",
-                    url: "/controllers/PhonebookController.php",
-                    dataType: "html",
-                    success: function (data) {
-                        $(".container").text(data);
-                    }
-                });
-            });
-        });
-        </script>-->
-
-
     </li>
     <li>
         <?php

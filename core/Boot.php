@@ -7,7 +7,6 @@ function autoload($class) {
         if(file_exists($models_dir.$class.'.php')) {
             include $models_dir.$class.'.php';
         }
-
     }
 }
 

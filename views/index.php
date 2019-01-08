@@ -21,5 +21,6 @@
         <script src="resources/js/currentMenu.js"></script>
         <script src="resources/js/toggleDetails.js"></script>
         <script src="resources/js/addElem.js"></script>
+        <script src="resources/js/ajaxPhonebook.js"></script>
     </body>
 </html>
